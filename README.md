@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bethel Casa de Dios — Church Website
 
-## Getting Started
+A bilingual (English / Spanish) landing site for Bethel Casa de Dios, built with
+Next.js 16 (App Router), React 19, Tailwind CSS 4, and `next-intl`.
 
-First, run the development server:
+Pages: home, about, ministries, events, visit, give, prayer, contact.
+
+## Getting started
+
+Requirements: Node.js 20+ and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm run start` — serve the production build
+- `npm run lint` — run ESLint
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+Copy `.env.example` to `.env.local` and fill in your values. `.env.local` is
+git-ignored and must never be committed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+cp .env.example .env.local
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Variable      | Used by                                                      |
+| ------------- | ------------------------------------------------------------ |
+| `GCP_API_KEY` | Google Cloud API key for the Stitch MCP server (`.mcp.json`) |
 
-## Deploy on Vercel
+## Project layout
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/` — App Router pages, components, and server actions
+- `i18n/` — `next-intl` request configuration
+- `messages/` — `en.json`, `es.json` translation catalogs
+- `docs/design-system/` — UI design system reference
+- `public/` — static assets
