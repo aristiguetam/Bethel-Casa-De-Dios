@@ -13,6 +13,17 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      // Stitch design comps reference external CDN images at runtime; using a
+      // plain <img> tag preserves the Stitch markup 1:1 without forcing every
+      // hero shot through next/image.
+      "@next/next/no-img-element": "off",
+      // App Router supports <link> tags inside layout <head>; the Pages Router
+      // rule does not apply here.
+      "@next/next/no-page-custom-font": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

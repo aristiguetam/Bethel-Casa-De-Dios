@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#7fa7cd",
+                        "tertiary-container": "#37393a",
+                        "surface-bright": "#f9f9fc",
+                        "error-container": "#ffdad6",
+                        "secondary": "#735c00",
+                        "surface-variant": "#e2e2e5",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-high": "#e8e8eb",
+                        "secondary-fixed-dim": "#e9c349",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#a3cbf2",
+                        "inverse-on-surface": "#f1f0f4",
+                        "outline-variant": "#c2c7ce",
+                        "secondary-container": "#fed65b",
+                        "primary-container": "#0b3c5d",
+                        "on-primary": "#ffffff",
+                        "outline": "#72777e",
+                        "background": "#f9f9fc",
+                        "primary-fixed": "#cee5ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eeedf1",
+                        "surface-container-low": "#f3f3f6",
+                        "on-primary-fixed-variant": "#1f4a6c",
+                        "surface-dim": "#dadadd",
+                        "on-tertiary-container": "#a2a3a3",
+                        "surface-tint": "#396285",
+                        "primary": "#00263f",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface": "#f9f9fc",
+                        "on-surface-variant": "#42474e",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-fixed-dim": "#a3cbf2",
+                        "surface-container-highest": "#e2e2e5",
+                        "tertiary": "#222424",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#745c00",
+                        "on-background": "#1a1c1e",
+                        "inverse-surface": "#2f3033",
+                        "on-primary-fixed": "#001d32",
+                        "on-surface": "#1a1c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "h1": ["Noto Serif"],
+                        "h3": ["Noto Serif"],
+                        "h2": ["Noto Serif"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "h3": ["28px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9fc;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800 shadow-sm dark:shadow-none sticky top-0 z-50">
+<nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
+<div class="text-xl font-bold text-blue-900 dark:text-blue-100 font-serif">Bethel Casa De Dios</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 font-serif text-base tracking-tight transition-colors duration-200" href="#">Home</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 font-serif text-base tracking-tight transition-colors duration-200" href="#">About Us</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 font-serif text-base tracking-tight transition-colors duration-200" href="#">Ministries</a>
+<a class="text-blue-900 dark:text-blue-200 font-bold border-b-2 border-yellow-600 pb-1 font-serif text-base tracking-tight transition-colors duration-200" href="#">Location</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity">
+                Visit Us
+            </button>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-gutter py-xl">
+<!-- Hero Section -->
+<section class="mb-xl">
+<h1 class="font-h1 text-h1 text-primary mb-md">Visit Us</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-lg">
+                We invite you to experience the warmth of our community. Whether you are seeking spiritual growth or a place to belong, our doors are open to everyone in Hollywood and beyond.
+            </p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Map & Location Info Column -->
+<div class="lg:col-span-7 space-y-lg">
+<!-- Map Placeholder -->
+<div class="w-full aspect-video rounded-xl overflow-hidden bg-surface-container shadow-sm border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Modern minimalist map view of Hollywood, Florida area with subtle blue and gold accents marking the church location" data-location="Hollywood, Broward County, Florida" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjX3Tk5Cw7kWIUXCaP6frq3dQevk5vLwvWq6sPyC3ZhrSvYPSMm3Z-ZWPsPakZiVHGLXDu0kGdwYkJIRdvp3KMVtaAc63ebMx9-JRFtoKvaar_VF7cG29ZEGx9irVcU3BGCLY3pt3mkqy0rY_cEwUuUDWPZBaxznDKh3rbH_C2CEigXtRJu9cgREGP1bMwaIL8gbK0T4EFiFwhQQwiDzxsZKECZmow--kolyTuUkjlC4Dm3Bb28FSi5FA_vxq0F-5dAUPGyF9udGc0"/>
+<div class="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg border-l-4 border-secondary flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<div>
+<p class="font-label-sm text-label-sm text-primary">Hollywood, Broward</p>
+<p class="text-xs text-on-surface-variant">Bethel Casa De Dios</p>
+</div>
+</div>
+</div>
+<!-- Info Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Physical Address Card -->
+<div class="bg-white p-md rounded-xl shadow-[0_4px_20px_rgba(0,38,63,0.05)] border-t-2 border-secondary h-full flex flex-col">
+<div class="flex items-center gap-2 mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<h3 class="font-h3 text-h3 !text-lg">Physical Address</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            1234 Spiritual Way,<br/>
+                            Hollywood, FL 33020<br/>
+                            Broward County
+                        </p>
+<div class="mt-auto pt-md">
+<a class="text-primary font-label-sm text-label-sm inline-flex items-center gap-1 hover:underline" href="#">
+                                Get Directions <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Service Times Card -->
+<div class="bg-white p-md rounded-xl shadow-[0_4px_20px_rgba(0,38,63,0.05)] border-t-2 border-secondary h-full flex flex-col">
+<div class="flex items-center gap-2 mb-sm text-primary">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+<h3 class="font-h3 text-h3 !text-lg">Service Times</h3>
+</div>
+<ul class="space-y-2 font-body-md text-body-md text-on-surface-variant">
+<li class="flex justify-between">
+<span class="font-semibold">Sunday Morning</span>
+<span>10:30 AM</span>
+</li>
+<li class="flex justify-between">
+<span class="font-semibold">Wednesday Bible Study</span>
+<span>7:00 PM</span>
+</li>
+<li class="flex justify-between">
+<span class="font-semibold">Youth Night (Fri)</span>
+<span>6:30 PM</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Contact Form & Details Column -->
+<div class="lg:col-span-5 space-y-md">
+<div class="bg-white p-lg rounded-xl shadow-[0_4px_20px_rgba(0,38,63,0.05)] h-full">
+<h2 class="font-h2 text-h3 text-primary mb-md">Send us a Message</h2>
+<form class="space-y-md">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Full Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" placeholder="Your name" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Email Address</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" placeholder="example@email.com" type="email"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">How can we help?</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-outline" placeholder="Your message here..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-sm text-label-sm hover:bg-primary-container transition-colors shadow-lg shadow-primary/10" type="submit">
+                            Send Message
+                        </button>
+</form>
+<div class="mt-lg pt-lg border-t border-surface-variant">
+<div class="space-y-md">
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="phone">phone</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Phone Number</p>
+<p class="font-body-md text-primary font-semibold">(954) 555-0123</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">General Inquiry</p>
+<p class="font-body-md text-primary font-semibold">info@bethelcasadedios.com</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-slate-950 border-t border-gray-200 dark:border-gray-800">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 py-16 max-w-7xl mx-auto w-full">
+<div>
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100 font-serif mb-4">Bethel Casa De Dios</div>
+<p class="font-serif text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                    A community dedicated to sacred hospitality, spiritual growth, and serving our neighbors with love.
+                </p>
+</div>
+<div class="space-y-4">
+<h4 class="font-serif text-sm font-bold text-blue-900 dark:text-blue-200">Quick Links</h4>
+<div class="flex flex-col space-y-2">
+<a class="text-gray-500 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4 font-serif text-sm" href="#">Service Times</a>
+<a class="text-gray-500 dark:text-gray-400 hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4 font-serif text-sm" href="#">Contact Us</a>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-serif text-sm font-bold text-blue-900 dark:text-blue-200">Connect</h4>
+<div class="flex gap-4">
+<a class="text-gray-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span></a>
+<a class="text-gray-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span></a>
+<a class="text-gray-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="play_circle">play_circle</span></a>
+</div>
+<p class="font-serif text-sm leading-relaxed text-gray-500 dark:text-gray-400 mt-4">
+                    © 2024 Bethel Casa De Dios. Sacred Hospitality.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

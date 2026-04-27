@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#7fa7cd",
+                    "tertiary-container": "#37393a",
+                    "surface-bright": "#f9f9fc",
+                    "error-container": "#ffdad6",
+                    "secondary": "#735c00",
+                    "surface-variant": "#e2e2e5",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-high": "#e8e8eb",
+                    "secondary-fixed-dim": "#e9c349",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#a3cbf2",
+                    "inverse-on-surface": "#f1f0f4",
+                    "outline-variant": "#c2c7ce",
+                    "secondary-container": "#fed65b",
+                    "primary-container": "#0b3c5d",
+                    "on-primary": "#ffffff",
+                    "outline": "#72777e",
+                    "background": "#f9f9fc",
+                    "primary-fixed": "#cee5ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#eeedf1",
+                    "surface-container-low": "#f3f3f6",
+                    "on-primary-fixed-variant": "#1f4a6c",
+                    "surface-dim": "#dadadd",
+                    "on-tertiary-container": "#a2a3a3",
+                    "surface-tint": "#396285",
+                    "primary": "#00263f",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface": "#f9f9fc",
+                    "on-surface-variant": "#42474e",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-secondary-fixed": "#241a00",
+                    "primary-fixed-dim": "#a3cbf2",
+                    "surface-container-highest": "#e2e2e5",
+                    "tertiary": "#222424",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#745c00",
+                    "on-background": "#1a1c1e",
+                    "inverse-surface": "#2f3033",
+                    "on-primary-fixed": "#001d32",
+                    "on-surface": "#1a1c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "xl": "80px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "md": "24px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "h1": ["Noto Serif"],
+                    "h3": ["Noto Serif"],
+                    "h2": ["Noto Serif"],
+                    "body-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h3": ["28px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(0, 38, 63, 0.9), rgba(0, 38, 63, 0.4));
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased">
+<!-- TopNavBar -->
+<header class="bg-white dark:bg-slate-900 shadow-sm dark:shadow-none border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50">
+<nav class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto w-full">
+<div class="text-xl font-bold text-blue-900 dark:text-blue-100 font-serif">
+                Bethel Casa De Dios
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-serif text-base tracking-tight">
+<a class="text-blue-900 dark:text-blue-200 font-bold border-b-2 border-yellow-600 pb-1" href="#">Home</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors duration-200" href="#">About Us</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors duration-200" href="#">Ministries</a>
+<a class="text-gray-600 dark:text-gray-400 hover:text-blue-900 dark:hover:text-blue-200 transition-colors duration-200" href="#">Location</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+                Visit Us
+            </button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[870px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Interior of a modern church sanctuary with high ceilings, warm wooden accents, and soft atmospheric lighting creating a peaceful welcoming environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUnxdyOqvXYQIvDNPmhlIzUYSV6LAS7wG_3VSt9D1-ovrXpI43Kjhr2lFnZ5mgQRQVXNzeurLJ3yxjIXj6-_efkER7Gdg95ev0wROuWDhl8N1JhmbYPwAkkETA7_KhN63pgk-fY5jHPJ7qoSaUioKcleQimMZengysJ9ANAkG2bk9FbNy7PHkl8miPX9PMeK61RXJP-KbLegHST_YCaooeRwQvUBGredccgD6sI0JhEaAbve3iP5V8DkfSOkIJbfqPW_QfKwjwbWOt"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+<div class="max-w-2xl">
+<h1 class="font-h1 text-h1 text-white mb-6">Welcome Home to Bethel Casa De Dios</h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-8">A sanctuary of sacred hospitality in the heart of Hollywood, Broward. Experience spiritual depth and authentic community.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-xl font-label-sm shadow-lg hover:brightness-105 transition-all">
+                            Join Us This Sunday
+                        </button>
+<button class="border-2 border-white text-white px-8 py-4 rounded-xl font-label-sm hover:bg-white hover:text-primary transition-all">
+                            Watch Online
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Us Section (Floating Card Style) -->
+<section class="relative z-20 -mt-16 max-w-7xl mx-auto px-8">
+<div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 border-t-4 border-secondary grid md:grid-cols-3 gap-12 items-center">
+<div class="md:col-span-2">
+<h2 class="font-h2 text-h2 text-primary mb-4">Join Us This Sunday</h2>
+<p class="text-on-surface-variant font-body-md">We gather weekly to worship and grow together. Whether you're a long-time believer or just exploring faith, there's a place for you here.</p>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="bg-secondary/10 p-3 rounded-full text-secondary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="font-bold text-primary">Service Times</p>
+<p class="text-on-surface-variant">Spanish: 9:00 AM<br/>Bilingual: 11:30 AM</p>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-label-sm hover:opacity-90 transition-opacity">
+                        Plan Your Visit
+                    </button>
+</div>
+</div>
+<!-- Weekly Schedule Row -->
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Monday - Friday -->
+<div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+<div class="bg-primary/5 p-3 rounded-full text-primary mb-4">
+<span class="material-symbols-outlined">prayer_times</span>
+</div>
+<p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Mon – Fri</p>
+<h4 class="font-bold text-primary mb-1">Prayer</h4>
+<p class="text-on-surface-variant text-sm">5:00 AM – 6:00 AM</p>
+</div>
+<!-- Thursday -->
+<div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+<div class="bg-primary/5 p-3 rounded-full text-primary mb-4">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Thursday</p>
+<h4 class="font-bold text-primary mb-1">Bible Study</h4>
+<p class="text-on-surface-variant text-sm">8:00 PM</p>
+</div>
+<!-- Friday -->
+<div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+<div class="bg-primary/5 p-3 rounded-full text-primary mb-4">
+<span class="material-symbols-outlined">volunteer_activism</span>
+</div>
+<p class="text-xs font-bold text-secondary uppercase tracking-widest mb-1">Friday</p>
+<h4 class="font-bold text-primary mb-1">Youth Service</h4>
+<p class="text-on-surface-variant text-sm">7:30 PM</p>
+</div>
+<!-- Saturday -->
+<div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center text-center opacity-75">
+<div class="bg-gray-100 p-3 rounded-full text-gray-400 mb-4">
+<span class="material-symbols-outlined">event_busy</span>
+</div>
+<p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Saturday</p>
+<h4 class="font-bold text-gray-400 mb-1">Status</h4>
+<p class="text-gray-400 text-sm">Closed</p>
+</div>
+</div>
+</section>
+<!-- Our Mission Section -->
+<section class="py-xl max-w-7xl mx-auto px-8">
+<div class="text-center max-w-3xl mx-auto mb-lg">
+<span class="text-secondary font-label-sm uppercase tracking-widest">Our Purpose</span>
+<h2 class="font-h2 text-h2 text-primary mt-2 mb-4">Sharing the Light of Christ</h2>
+<p class="text-on-surface-variant text-body-lg">At Bethel Casa De Dios, our mission is to cultivate a space of sacred hospitality where every soul can experience transformation through faith.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Worship -->
+<div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">temple_buddhist</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Worship</h3>
+<p class="text-on-surface-variant">Connecting with the Divine through authentic, modern, and traditional expressions of praise.</p>
+</div>
+<!-- Community -->
+<div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">groups</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Community</h3>
+<p class="text-on-surface-variant">Building meaningful relationships and fostering a sense of belonging for every generation.</p>
+</div>
+<!-- Growth -->
+<div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-secondary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-secondary text-3xl">trending_up</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-3">Growth</h3>
+<p class="text-on-surface-variant">Empowering your spiritual journey through biblical teaching and intentional discipleship.</p>
+</div>
+</div>
+</section>
+<!-- Latest Message Section -->
+<section class="bg-primary text-white py-xl overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-lg items-center">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+<img class="w-full aspect-video object-cover brightness-75 group-hover:scale-105 transition-transform duration-700" data-alt="Close up of a Bible on a wooden lectern with warm spotlighting, representing a recent church sermon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcirIcr-Y23JYUzWchebsso2GXDk9i4vpvmMBRSFTUGlfR08wbsaW7ri0ChHkaWp1cRm8AG0VjA3SVwEwRfsDg4v-m-SgQMmSaPVkZZD4G2Qqp7N5MCFzBd6bHxVFXc6DyaLCEsHlHfOSzzakCnFY1g7ZNUvngqmhVW7yo1PAYiNA6O0xNDVYbZsfPsuGBGZNycde05K7mc_3bcxyckdB2HgjLfGR9RrtDcJNZGt339O_tMovc4AzfVcTrDZ5OMboxo3Ut0UhO8EQs"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white/20 backdrop-blur-md p-6 rounded-full border border-white/30 hover:scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-white text-5xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-4 left-4 bg-secondary-container px-3 py-1 rounded-full text-on-secondary-container text-xs font-bold uppercase tracking-wider">
+                        Latest Message
+                    </div>
+</div>
+<div>
+<span class="text-secondary-fixed font-label-sm">SERMON SERIES</span>
+<h2 class="font-h2 text-h2 mt-2 mb-6">Walking in Faithful Abundance</h2>
+<p class="text-white/80 text-body-lg mb-8">Join Pastor Manuel Rodriguez as he explores the intersection of ancient scripture and modern living in our latest series. Watch the full message and find related study resources below.</p>
+<div class="flex gap-4">
+<button class="bg-white text-primary px-6 py-3 rounded-xl font-label-sm hover:bg-opacity-90 transition-all">Watch Now</button>
+<button class="border border-white/30 text-white px-6 py-3 rounded-xl font-label-sm hover:bg-white/10 transition-all">Sermon Notes</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Events (Bento Grid) -->
+<section class="py-xl max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-h2 text-h2 text-primary">Upcoming Events</h2>
+<p class="text-on-surface-variant">Life is better together. Find your next step here.</p>
+</div>
+<a class="text-secondary font-label-sm underline underline-offset-8" href="#">View All Events</a>
+</div>
+<div class="grid md:grid-cols-4 gap-6">
+<!-- Large Event -->
+<div class="md:col-span-2 md:row-span-2 relative group rounded-2xl overflow-hidden shadow-lg">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Young adults gathering around a table with coffee and bibles in a bright modern community space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjvR8y8t8A89ooDYZx9PN_yRWPoCoEEs1q0ut6ZHJzepam0AG6TegAsdN14lWSNdhBGGadb6qXciSI9wtkmGna6rM_g3OQsuk4bpV1v3MdWDMMgsonnG0ufLgJMbnng70RF9Hg_4BAdFsa6vFvRnvXbaITj18dRjtyAwjfUqxfMJpuCRBS9vSpyQXsD0hcEzQqJNFO-je0OHnfm2CXt5OoWdXWAA7Iy6nvcNFK4yV3Zu7k-mPHj8wUmsnxlbKfelpqqHm3s1btHD_f"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-xs font-bold mb-4 inline-block">FEATURED</span>
+<h3 class="text-white font-h3 text-h3 mb-2">Successful Couples Event</h3>
+<p class="text-white/80 mb-2 font-bold">October 24th</p>
+<p class="text-white/70 mb-4 text-sm line-clamp-2">Our calling is to restore families for the glory of God. Every relationship needs nurturing, and these workshops offer tools to strengthen, improve, and reignite relationships.</p>
+<button class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-6 py-2 rounded-lg font-label-sm">Learn More</button>
+</div>
+</div>
+<!-- Small Event 1 -->
+<div class="md:col-span-2 bg-white p-6 rounded-2xl border border-gray-100 flex gap-6 items-center shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-primary/5 rounded-xl p-4 text-center min-w-[80px]">
+<span class="block text-primary font-bold text-xl leading-none">THU</span>
+<span class="text-on-surface-variant text-xs uppercase font-bold">7 PM</span>
+</div>
+<div>
+<h4 class="font-bold text-primary text-lg">Young Adults Social</h4>
+<p class="text-on-surface-variant text-sm">Connecting young adults in our community for fellowship, growth, and meaningful conversation every week.</p>
+</div>
+</div>
+<!-- Small Event 2 -->
+<div class="md:col-span-2 bg-white p-6 rounded-2xl border border-gray-100 flex gap-6 items-center shadow-sm hover:shadow-md transition-shadow">
+<div class="bg-primary/5 rounded-xl p-4 text-center min-w-[80px]">
+<span class="block text-primary font-bold text-xl leading-none">28</span>
+<span class="text-on-surface-variant text-xs uppercase font-bold">OCT</span>
+</div>
+<div>
+<h4 class="font-bold text-primary text-lg">Kids Camp</h4>
+<p class="text-on-surface-variant text-sm">Join us for an exciting Kids Camp filled with fun, games, and faith! Children will enjoy engaging activities, make new friends, and grow in their relationship with God in a safe and joyful environment.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Contact CTA -->
+<section class="bg-surface-container-low py-xl">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<div class="max-w-2xl mx-auto bg-white p-12 rounded-3xl shadow-sm border border-gray-100">
+<h2 class="font-h3 text-h3 text-primary mb-4">Stay Connected</h2>
+<p class="text-on-surface-variant mb-8">Receive weekly inspiration and updates from our community directly in your inbox.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-surface-container-lowest border-gray-200 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Your email address" type="email"/>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-label-sm hover:opacity-90 transition-opacity" type="submit">
+                            Subscribe
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-50 dark:bg-slate-950 border-t border-gray-200 dark:border-gray-800">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 py-16 max-w-7xl mx-auto w-full font-serif text-sm leading-relaxed">
+<div class="space-y-6">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100">Bethel Casa De Dios</div>
+<p class="text-gray-500 dark:text-gray-400">123 Faith Way, Hollywood, FL 33020<br/>Broward County, Florida</p>
+<div class="flex gap-4">
+<a class="text-gray-500 hover:text-secondary" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-gray-500 hover:text-secondary" href="#"><span class="material-symbols-outlined">rss_feed</span></a>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-blue-900 dark:text-blue-200 uppercase tracking-widest text-xs">Quick Links</p>
+<ul class="space-y-2 text-gray-500 dark:text-gray-400">
+<li><a class="hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4" href="#">Service Times</a></li>
+<li><a class="hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4" href="#">Facebook</a></li>
+<li><a class="hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4" href="#">Instagram</a></li>
+<li><a class="hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4" href="#">YouTube</a></li>
+<li><a class="hover:text-yellow-600 dark:hover:text-yellow-400 underline underline-offset-4" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<p class="font-bold text-blue-900 dark:text-blue-200 uppercase tracking-widest text-xs">Our Vision</p>
+<p class="text-gray-500 dark:text-gray-400 italic">"Sacred Hospitality. Rooted in tradition, reaching for the future. We believe in creating a home where every soul is seen, heard, and loved."</p>
+<div class="pt-6 text-xs border-t border-gray-200 dark:border-gray-800">
+                    © 2024 Bethel Casa De Dios. Sacred Hospitality.
+                </div>
+</div>
+</div>
+</footer>
+</body></html>

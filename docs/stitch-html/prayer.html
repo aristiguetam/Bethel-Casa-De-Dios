@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prayer Request - Sacred Hospitality</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e2e2e5",
+                    "surface-dim": "#dadadd",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#eeedf1",
+                    "primary-container": "#0b3c5d",
+                    "background": "#f9f9fc",
+                    "surface-bright": "#f9f9fc",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "secondary-fixed-dim": "#e9c349",
+                    "secondary": "#735c00",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "on-primary-fixed": "#001d32",
+                    "outline": "#72777e",
+                    "on-secondary-fixed-variant": "#574500",
+                    "inverse-surface": "#2f3033",
+                    "inverse-on-surface": "#f1f0f4",
+                    "tertiary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-container": "#a2a3a3",
+                    "secondary-container": "#fed65b",
+                    "on-surface": "#1a1c1e",
+                    "on-secondary-container": "#745c00",
+                    "on-primary-fixed-variant": "#1f4a6c",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e2e2e5",
+                    "on-primary-container": "#7fa7cd",
+                    "surface-container-high": "#e8e8eb",
+                    "surface-container-low": "#f3f3f6",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#e2e2e2",
+                    "primary-fixed-dim": "#a3cbf2",
+                    "primary": "#00263f",
+                    "outline-variant": "#c2c7ce",
+                    "on-surface-variant": "#42474e",
+                    "on-background": "#1a1c1e",
+                    "surface": "#f9f9fc",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#37393a",
+                    "surface-tint": "#396285",
+                    "secondary-fixed": "#ffe088",
+                    "primary-fixed": "#cee5ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#222424",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "inverse-primary": "#a3cbf2"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "base": "8px",
+                    "xl": "80px",
+                    "container-max": "1200px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "h2": ["Noto Serif"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "h1": ["Noto Serif"],
+                    "h3": ["Noto Serif"]
+            },
+            "fontSize": {
+                    "label-sm": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "h3": ["28px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .prayer-gradient {
+            background: linear-gradient(135deg, rgba(206, 229, 255, 0.2) 0%, rgba(255, 224, 136, 0.1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+<!-- TopAppBar -->
+<nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold font-serif text-blue-900">Sacred Hospitality</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Home</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Events</a>
+<a class="font-serif text-sm tracking-wide uppercase text-blue-900 border-b-2 border-amber-400 pb-1" href="#">Prayer</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Giving</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Sermons</a>
+<button class="bg-primary text-white px-6 py-2 rounded-full font-label-sm text-label-sm scale-100 active:scale-95 duration-150">Connect</button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+</div>
+</nav>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-16 px-6 overflow-hidden prayer-gradient">
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-secondary-container/30 text-secondary font-label-sm text-label-sm">COMMUNITY &amp; SUPPORT</span>
+<h1 class="font-h1 text-h1 text-primary mb-6">We are Praying for You</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    You are never alone on your journey. Whether you're carrying a heavy burden or celebrating a victory, our community is here to lift you up in prayer.
+                </p>
+</div>
+<!-- Abstract background element -->
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-secondary-fixed opacity-10 rounded-full blur-3xl"></div>
+</section>
+<!-- Main Content Grid -->
+<section class="max-w-7xl mx-auto px-6 py-lg">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Prayer Request Form Card -->
+<div class="lg:col-span-7 bg-white p-8 md:p-12 rounded-xl shadow-[0_4px_20px_rgba(0,38,63,0.05)] border border-surface-container">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-weight="fill">favorite</span>
+</div>
+<div>
+<h2 class="font-h3 text-h3 text-primary">Submit a Request</h2>
+<p class="text-on-surface-variant font-body-md">Our pastoral team and prayer chain will pray over your request.</p>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">FULL NAME</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">EMAIL ADDRESS</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block font-label-sm text-label-sm text-on-surface-variant">HOW CAN WE PRAY FOR YOU?</label>
+<textarea class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="Share your request with us..." rows="5"></textarea>
+</div>
+<div class="flex items-start gap-3 p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/30">
+<input class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" id="confidential" type="checkbox"/>
+<label class="text-sm text-on-surface-variant leading-relaxed" for="confidential">
+                                Keep this request confidential. Only our pastoral team will see this. 
+                            </label>
+</div>
+<button class="w-full md:w-auto bg-primary text-white px-xl py-4 rounded-full font-label-sm text-label-sm shadow-md hover:bg-primary-container transition-all scale-100 active:scale-95" type="submit">
+                            Submit Prayer Request
+                        </button>
+</form>
+</div>
+<!-- Bento Grid Content (Power of Prayer) -->
+<div class="lg:col-span-5 grid grid-cols-1 gap-6">
+<!-- Feature Image Card -->
+<div class="relative rounded-xl overflow-hidden aspect-video shadow-lg">
+<img class="w-full h-full object-cover" data-alt="peaceful morning sunlight streaming through a stained glass window in a quiet sanctuary with subtle dust motes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHZPzLzHO-YodXg3WN-JoRg97yNfH7lWMw4A9SqJl3Z6bw7iNUICTTXuqNpHdyAx5u0wW8HKaVpOItc0y98QnTwlYBKSswp4HbVpb7T0rbGK7bwvyqUa6qcJqfsu6lmAqo8hchIKyRjkedjxkuJeiJLZSoCYYGItnPhy0s5vWx_DR3jb_rwLt9kLtIB2_UqWTRTyVODXojfBBEheyUJ_fineuvuBPegbqGqVzRwcmBC1wszQtqqYkMcuxst25kRpKyJq8bSYbl8iVv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
+<h3 class="text-white font-h3 text-h3 mb-2">The Power of Prayer</h3>
+<p class="text-primary-fixed text-sm">Finding peace in the presence of the Divine.</p>
+</div>
+</div>
+<!-- Quote Card -->
+<div class="bg-secondary-fixed/20 p-8 rounded-xl border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary mb-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="italic font-h3 text-h3 text-primary leading-snug mb-4">
+                            "Prayer does not fit us for the greater work; prayer is the greater work."
+                        </p>
+<cite class="font-label-sm text-label-sm text-secondary not-italic">— Oswald Chambers</cite>
+</div>
+<!-- Community Stat Card -->
+<div class="bg-white p-6 rounded-xl border border-surface-container-high shadow-sm flex items-center gap-6">
+<div class="flex-1">
+<h4 class="font-h3 text-h3 text-primary">2,400+</h4>
+<p class="text-on-surface-variant text-sm">Prayers offered by our community this month</p>
+</div>
+<div class="w-16 h-1 bg-secondary-container rounded-full relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-secondary w-3/4"></div>
+</div>
+</div>
+<!-- Promise Card -->
+<div class="bg-surface-container-highest p-8 rounded-xl">
+<h4 class="font-label-sm text-label-sm text-primary mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">verified</span>
+                            OUR PROMISE
+                        </h4>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                            Every single request submitted is read and prayed for by name by our dedicated Intercessory Prayer Team. We believe in the restorative power of communal support.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Help Section -->
+</main>
+<!-- Footer -->
+<footer class="bg-gray-50 border-t border-gray-200">
+<div class="w-full py-12 px-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+<div>
+<div class="font-serif font-bold text-blue-900 text-xl mb-4">Sacred Hospitality</div>
+<p class="text-gray-500 font-serif text-sm max-w-sm">A community dedicated to radical welcome and spiritual depth. Join us in our mission to be a light in the city.</p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-blue-900 mb-2">RESOURCES</span>
+<a class="text-gray-500 hover:underline decoration-amber-400 font-serif text-sm" href="#">Privacy</a>
+<a class="text-gray-500 hover:underline decoration-amber-400 font-serif text-sm" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-blue-900 mb-2">ENGAGE</span>
+<a class="text-gray-500 hover:underline decoration-amber-400 font-serif text-sm" href="#">Volunteer</a>
+<a class="text-gray-500 hover:underline decoration-amber-400 font-serif text-sm" href="#">Ministries</a>
+</div>
+<div class="col-span-2 mt-4 md:mt-0 flex flex-col md:items-end justify-center">
+<p class="text-gray-500 font-serif text-sm">© 2024 Sacred Hospitality Church. Built for Community.</p>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-white border-t border-gray-200 z-50">
+<a class="flex flex-col items-center justify-center text-gray-400 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-serif text-[11px] font-medium mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-serif text-[11px] font-medium mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-900 bg-amber-50/50 rounded-xl px-3 py-1 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-serif text-[11px] font-medium mt-1">Prayer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 tap-highlight-transparent active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">volunteer_activism</span>
+<span class="font-serif text-[11px] font-medium mt-1">Give</span>
+</a>
+</nav>
+<!-- FAB (Contextual) -->
+<button class="fixed bottom-20 md:bottom-10 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</body></html>

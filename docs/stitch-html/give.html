@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e2e2e5",
+                        "surface-dim": "#dadadd",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eeedf1",
+                        "primary-container": "#0b3c5d",
+                        "background": "#f9f9fc",
+                        "surface-bright": "#f9f9fc",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "secondary-fixed-dim": "#e9c349",
+                        "secondary": "#735c00",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-fixed": "#001d32",
+                        "outline": "#72777e",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-surface": "#2f3033",
+                        "inverse-on-surface": "#f1f0f4",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#a2a3a3",
+                        "secondary-container": "#fed65b",
+                        "on-surface": "#1a1c1e",
+                        "on-secondary-container": "#745c00",
+                        "on-primary-fixed-variant": "#1f4a6c",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e2e2e5",
+                        "on-primary-container": "#7fa7cd",
+                        "surface-container-high": "#e8e8eb",
+                        "surface-container-low": "#f3f3f6",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "primary-fixed-dim": "#a3cbf2",
+                        "primary": "#00263f",
+                        "outline-variant": "#c2c7ce",
+                        "on-surface-variant": "#42474e",
+                        "on-background": "#1a1c1e",
+                        "surface": "#f9f9fc",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#37393a",
+                        "surface-tint": "#396285",
+                        "secondary-fixed": "#ffe088",
+                        "primary-fixed": "#cee5ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary": "#222424",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "inverse-primary": "#a3cbf2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "base": "8px",
+                        "xl": "80px",
+                        "container-max": "1200px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "gutter": "24px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "h2": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "h1": ["Noto Serif"],
+                        "h3": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "h2": ["36px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "h1": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "h3": ["28px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 38, 63, 0.8), rgba(0, 38, 63, 0.4)), url('https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- TopAppBar -->
+<header class="bg-white/95 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 shadow-sm">
+<nav class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<span class="text-2xl font-bold font-serif text-blue-900">Sacred Hospitality</span>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Home</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Events</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Prayer</a>
+<a class="font-serif text-sm tracking-wide uppercase text-blue-900 border-b-2 border-amber-400 pb-1" href="#">Giving</a>
+<a class="font-serif text-sm tracking-wide uppercase text-gray-500 font-medium hover:text-blue-700 transition-colors duration-300" href="#">Sermons</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-serif text-sm tracking-wide uppercase scale-100 active:scale-95 duration-150">
+                Connect
+            </button>
+</nav>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="hero-gradient h-[400px] flex items-center justify-center text-center px-gutter mb-xl" data-alt="Warm sunlit sanctuary interior with empty wooden pews and light streaming through stained glass windows in a modern minimalist church">
+<div class="max-w-3xl">
+<h1 class="font-h1 text-h1 text-white mb-base">Ways to Give</h1>
+<p class="font-body-lg text-body-lg text-white/90">"Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver." — 2 Corinthians 9:7</p>
+</div>
+</section>
+<div class="max-w-7xl mx-auto px-gutter pb-xl">
+<!-- Giving Options Bento Grid -->
+<div class="bento-grid">
+<!-- Credit/Debit Giving Card -->
+<div class="col-span-12 lg:col-span-7 bg-white p-lg rounded-xl shadow-sm border-t-4 border-secondary-container">
+<div class="flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="credit_card">credit_card</span>
+<h3 class="font-h3 text-h3 text-primary">Give Online</h3>
+</div>
+<p class="font-body-md text-on-surface-variant mb-lg">Simple and secure one-time or recurring donations using your debit or credit card.</p>
+<form class="space-y-md">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Select Amount</label>
+<div class="grid grid-cols-3 gap-xs">
+<button class="border border-outline-variant py-sm rounded-lg hover:bg-surface-container transition-colors" type="button">$25</button>
+<button class="border border-outline-variant py-sm rounded-lg hover:bg-surface-container transition-colors" type="button">$50</button>
+<button class="border border-primary bg-primary-fixed-dim/20 py-sm rounded-lg" type="button">$100</button>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Custom Amount</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">$</span>
+<input class="w-full pl-lg pr-md py-sm bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none" placeholder="0.00" type="number"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-xs">Ministry Fund</label>
+<select class="w-full px-md py-sm bg-surface-container-low border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary outline-none">
+<option>General Fund</option>
+<option>Missions &amp; Outreach</option>
+<option>Building Project</option>
+<option>Youth Ministry</option>
+</select>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-sm tracking-widest uppercase hover:opacity-90 transition-opacity">
+                            Proceed to Secure Payment
+                        </button>
+</form>
+<div class="mt-md flex justify-center items-center gap-sm opacity-50">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+<span class="text-[12px] uppercase tracking-tighter">Secure 256-bit SSL Encrypted</span>
+</div>
+</div>
+<!-- Zelle Giving Card -->
+<div class="col-span-12 lg:col-span-5 bg-primary-container text-white p-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-base mb-md">
+<span class="material-symbols-outlined text-secondary-container" data-icon="account_balance">account_balance</span>
+<h3 class="font-h3 text-h3 text-secondary-container">Zelle Giving</h3>
+</div>
+<p class="font-body-md opacity-90 mb-lg leading-relaxed">
+                            Give directly from your bank account without any processing fees. 100% of your contribution goes to the church.
+                        </p>
+<div class="bg-white/10 p-md rounded-lg mb-lg border border-white/20">
+<label class="block font-label-sm text-xs opacity-70 mb-xs uppercase">Recipient Email</label>
+<div class="flex items-center justify-between">
+<span class="font-h3 text-[20px] select-all">give@bethelcasa.org</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-container" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex gap-md">
+<span class="font-bold text-secondary-container">01</span>
+<p class="text-sm">Open your banking app and select Zelle.</p>
+</div>
+<div class="flex gap-md">
+<span class="font-bold text-secondary-container">02</span>
+<p class="text-sm">Enter give@bethelcasa.org as the recipient.</p>
+</div>
+<div class="flex gap-md">
+<span class="font-bold text-secondary-container">03</span>
+<p class="text-sm">Confirm the name "Bethel Casa De Dios" appears.</p>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-white/10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-container" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-xs italic opacity-80">Please include your full name in the memo field for tax purposes.</p>
+</div>
+</div>
+</div>
+<!-- Serving/Volunteering Card -->
+<div class="col-span-12 bg-surface-container-high p-lg rounded-xl shadow-sm border border-outline-variant flex flex-col md:flex-row gap-lg items-center">
+<div class="md:w-1/3 h-64 w-full rounded-lg overflow-hidden">
+<img alt="Church volunteers" class="w-full h-full object-cover" data-alt="A diverse group of church volunteers smiling and working together in a community garden setting with soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMyPlSt8hk4a6v4y7HlJ92rvL7UEvIt3DEwRZe51ZwoJ1w4dWECpjmIRtMqMYe7Dputvt1oCqB2BdbLyxNvSIsnTwk7IIc8ogeNfKHVSFAOux7ax0bwpjCMnhWKfPOBQhS_e9nkfOsIolb2zKeo5OqgDCVngOQNmwlS1nFBnpyH2Oef4U6yJpzOtGPnaarr3Y79Sqfm0J1kRHsl_sC-SaU9qQn8clSs3OVvIgxK_n_lCTyW31E__lwVJaJGaITPKahbRW29U07FsyV"/>
+</div>
+<div class="md:w-2/3">
+<div class="inline-block px-sm py-xs bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-[12px] mb-sm">WE ARE ALWAYS LOOKING FOR HELP</div>
+<h3 class="font-h3 text-h3 text-primary mb-base">Serving the Church</h3>
+<p class="font-body-md text-on-surface-variant mb-md">Generosity isn't just about finances. Giving your time and talents is a profound way to serve the body of Christ. From hospitality to tech, we have a place for you.</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-base mb-lg">
+<div class="flex flex-col items-center p-base bg-white rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="restaurant">restaurant</span>
+<span class="text-[12px] font-semibold">Hospitality</span>
+</div>
+<div class="flex flex-col items-center p-base bg-white rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="child_care">child_care</span>
+<span class="text-[12px] font-semibold">Kids Ministry</span>
+</div>
+<div class="flex flex-col items-center p-base bg-white rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="computer">computer</span>
+<span class="text-[12px] font-semibold">Tech/Media</span>
+</div>
+<div class="flex flex-col items-center p-base bg-white rounded-lg border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-xs" data-icon="music_note">music_note</span>
+<span class="text-[12px] font-semibold">Worship</span>
+</div>
+</div>
+<button class="bg-[#25D366] text-white px-lg py-sm rounded-lg font-label-sm tracking-wide uppercase hover:opacity-90 transition-opacity flex items-center gap-base">
+                            Contact Us on WhatsApp
+                            <span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+</button>
+</div>
+</div>
+<!-- Transparency/Impact Card -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low p-md rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-primary p-base bg-white rounded-full" data-icon="verified">verified</span>
+<div>
+<h4 class="font-semibold text-primary mb-xs">Tax Deductible</h4>
+<p class="text-sm text-on-surface-variant">Bethel Casa De Dios is a 501(c)(3) nonprofit organization. Your contributions are tax-deductible.</p>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low p-md rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-primary p-base bg-white rounded-full" data-icon="visibility">visibility</span>
+<div>
+<h4 class="font-semibold text-primary mb-xs">Full Transparency</h4>
+<p class="text-sm text-on-surface-variant">We provide quarterly impact reports and annual giving statements to all regular contributors.</p>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-low p-md rounded-xl flex items-start gap-md">
+<span class="material-symbols-outlined text-primary p-base bg-white rounded-full" data-icon="public">public</span>
+<div>
+<h4 class="font-semibold text-primary mb-xs">Global Impact</h4>
+<p class="text-sm text-on-surface-variant">10% of every dollar given is dedicated to local community outreach and global mission work.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action Section -->
+<section class="bg-surface-container-highest py-xl text-center px-gutter">
+<h2 class="font-h2 text-h2 text-primary mb-base">Need Assistance?</h2>
+<p class="max-w-2xl mx-auto font-body-md text-on-surface-variant mb-lg">If you have questions about your donation, need to update your recurring gift, or want to give through stock or physical assets, our finance team is here to help.</p>
+<a class="inline-flex items-center gap-sm text-primary font-bold border-b-2 border-secondary hover:border-primary transition-all" href="mailto:finance@bethelcasa.org">
+                Contact Finance Team
+                <span class="material-symbols-outlined" data-icon="mail">mail</span>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-gray-50 border-t border-gray-200">
+<div class="w-full py-12 px-8 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+<div>
+<span class="font-serif font-bold text-blue-900 text-xl block mb-base">Sacred Hospitality Church</span>
+<p class="text-gray-500 font-serif text-sm max-w-sm mb-md">Creating a home where tradition meets grace, and every soul is welcome at the table of the Lord.</p>
+<p class="text-gray-500 font-serif text-sm">© 2024 Sacred Hospitality Church. Built for Community.</p>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col space-y-sm">
+<h5 class="font-bold text-blue-900 font-serif text-sm uppercase tracking-widest mb-xs">Quick Links</h5>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Privacy</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Contact</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Volunteer</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Ministries</a>
+</div>
+<div class="flex flex-col space-y-sm">
+<h5 class="font-bold text-blue-900 font-serif text-sm uppercase tracking-widest mb-xs">Community</h5>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Our Story</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Life Groups</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Beliefs</a>
+<a class="text-gray-500 font-serif text-sm hover:underline decoration-amber-400" href="#">Resources</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-white border-t border-gray-200 z-50">
+<a class="flex flex-col items-center justify-center text-gray-400" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-serif text-[11px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-serif text-[11px] font-medium">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-serif text-[11px] font-medium">Prayer</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-900 bg-amber-50/50 rounded-xl px-3 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="volunteer_activism">volunteer_activism</span>
+<span class="font-serif text-[11px] font-medium">Give</span>
+</a>
+</div>
+<!-- Padding for Fixed Mobile Nav -->
+<div class="md:hidden h-20"></div>
+</body></html>
