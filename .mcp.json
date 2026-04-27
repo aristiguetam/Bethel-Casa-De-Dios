@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://stitch.googleapis.com/mcp",
       "headers": {
-        "X-Goog-Api-Key": "***REMOVED***"
+        "X-Goog-Api-Key": ""
       }
     }
   }
