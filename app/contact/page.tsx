@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Icon } from "../components";
@@ -36,10 +37,12 @@ export default function ContactPage() {
         {/* Map + info column */}
         <div className="lg:col-span-7 space-y-12">
           <div className="w-full aspect-video rounded-xl overflow-hidden bg-surface-container shadow-sm border border-outline-variant relative">
-            <img
-              className="w-full h-full object-cover"
+            <Image
+              className="object-cover"
               src={MAP_IMG}
               alt={t("mapAlt")}
+              fill
+              sizes="(min-width: 1024px) 58vw, 100vw"
             />
             <div className="absolute bottom-4 left-4 bg-white p-4 rounded-lg shadow-lg border-l-4 border-secondary flex items-center gap-3">
               <Icon name="location_on" className="text-primary" />

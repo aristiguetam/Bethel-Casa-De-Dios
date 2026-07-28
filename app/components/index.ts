@@ -4,6 +4,7 @@ export { Chip } from "./Chip";
 export { Container } from "./Container";
 export { DonationProgress } from "./DonationProgress";
 export { Eyebrow, Heading } from "./Heading";
+export { HeroCarousel } from "./HeroCarousel";
 export { Icon } from "./Icon";
 export { LanguageToggle } from "./LanguageToggle";
 export { Input } from "./Input";

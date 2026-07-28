@@ -231,7 +231,7 @@ export default function GivePage() {
                   </div>
                 ))}
               </div>
-              <button className="bg-[#25D366] text-white px-12 py-3 rounded-lg font-label-sm tracking-wide uppercase hover:opacity-90 transition-opacity flex items-center gap-2">
+              <button className="bg-whatsapp text-white px-12 py-3 rounded-lg font-label-sm tracking-wide uppercase hover:opacity-90 transition-opacity flex items-center gap-2">
                 {t("contactWhatsApp")}
                 <Icon name="chat" className="text-sm" />
               </button>

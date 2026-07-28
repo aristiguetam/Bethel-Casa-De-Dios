@@ -11,7 +11,7 @@ import { cn } from "./cn";
 const navItems = [
   { href: "/", key: "home" },
   { href: "/about", key: "about" },
-  { href: "/ministries", key: "ministries" },
+  // { href: "/ministries", key: "ministries" }, // oculto temporalmente
   { href: "/events", key: "events" },
   { href: "/give", key: "give" },
   { href: "/prayer", key: "prayer" },

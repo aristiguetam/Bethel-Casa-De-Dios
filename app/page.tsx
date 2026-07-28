@@ -1,10 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Icon, LatestMessage, ScheduleCard } from "./components";
+import { HeroCarousel, Icon, LatestMessage, ScheduleCard } from "./components";
 import { formatEventSchedule, pickHomepageEvents, useEvents } from "./data/events";
-
-const HERO_IMG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuDUnxdyOqvXYQIvDNPmhlIzUYSV6LAS7wG_3VSt9D1-ovrXpI43Kjhr2lFnZ5mgQRQVXNzeurLJ3yxjIXj6-_efkER7Gdg95ev0wROuWDhl8N1JhmbYPwAkkETA7_KhN63pgk-fY5jHPJ7qoSaUioKcleQimMZengysJ9ANAkG2bk9FbNy7PHkl8miPX9PMeK61RXJP-KbLegHST_YCaooeRwQvUBGredccgD6sI0JhEaAbve3iP5V8DkfSOkIJbfqPW_QfKwjwbWOt";
 
 export default function Home() {
   const t = useTranslations("Home");
@@ -63,11 +61,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative h-[90vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            className="w-full h-full object-cover scale-105"
-            src={HERO_IMG}
-            alt={t("heroAlt")}
-          />
+          <HeroCarousel alt={t("heroAlt")} />
           <div className="absolute inset-0 hero-gradient" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 w-full">
@@ -229,10 +223,12 @@ export default function Home() {
         {featuredEvent ? (
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2 md:row-span-2 relative group rounded-3xl overflow-hidden shadow-xl min-h-[400px]">
-              <img
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              <Image
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
                 src={featuredEvent.image}
                 alt={featuredEvent.title}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/30 to-transparent" />
               <div className="absolute bottom-0 p-10">
@@ -259,7 +255,7 @@ export default function Home() {
                 key={event.id}
                 className="md:col-span-2 bg-white p-8 rounded-3xl border border-outline-variant/40 flex gap-8 items-center shadow-sm hover:shadow-md transition-all"
               >
-                <div className="bg-primary/5 rounded-2xl p-5 text-center min-w-[100px] border border-primary/10">
+                <div className="bg-primary/5 rounded-2xl p-5 text-center min-w-25 border border-primary/10">
                   <span className="block text-primary font-bold text-3xl leading-none mb-1">
                     {event.day}
                   </span>
@@ -304,7 +300,7 @@ export default function Home() {
             </div>
             <form className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto">
               <input
-                className="flex-grow bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-full px-8 py-5 focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-all outline-none backdrop-blur-sm"
+                className="grow bg-white/10 border border-white/20 text-white placeholder-white/50 rounded-full px-8 py-5 focus:ring-2 focus:ring-secondary-container focus:border-transparent transition-all outline-none backdrop-blur-sm"
                 placeholder={t("newsletterPlaceholder")}
                 type="email"
                 aria-label={t("newsletterEmailLabel")}
