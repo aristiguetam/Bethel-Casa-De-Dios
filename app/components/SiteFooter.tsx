@@ -48,6 +48,7 @@ export function SiteFooter() {
                 {t("aboutUs")}
               </Link>
             </li>
+            {/* Ministries oculto temporalmente
             <li>
               <Link
                 className="hover:text-secondary transition-colors"
@@ -56,6 +57,7 @@ export function SiteFooter() {
                 {t("ministries")}
               </Link>
             </li>
+            */}
             <li>
               <Link
                 className="hover:text-secondary transition-colors"

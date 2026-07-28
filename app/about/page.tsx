@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
@@ -87,10 +88,13 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative h-[614px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
-            className="w-full h-full object-cover brightness-[0.4]"
+          <Image
+            className="object-cover brightness-[0.4]"
             src={HERO_IMG}
             alt={t("heroAlt")}
+            fill
+            priority
+            sizes="100vw"
           />
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl">
@@ -125,11 +129,13 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
-              <img
-                className="w-full h-full object-cover"
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                className="object-cover"
                 src={STORY_IMG}
                 alt={t("storyImageAlt")}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
               />
             </div>
             <div className="absolute -bottom-8 -left-8 bg-secondary-container p-8 rounded-xl max-w-xs hidden md:block shadow-lg">
@@ -207,11 +213,13 @@ export default function AboutPage() {
         </div>
         <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="h-[400px]">
-              <img
-                className="w-full h-full object-cover"
+            <div className="relative h-[400px]">
+              <Image
+                className="object-cover"
                 src={LEAD_PASTORS_IMG}
                 alt={t("leadPastorsImageAlt")}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
               />
             </div>
             <div className="p-12 flex flex-col justify-center bg-primary text-on-primary">
@@ -247,11 +255,13 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {otherLeaders.map((leader) => (
             <div key={leader.name} className="text-center">
-              <div className="aspect-square rounded-full overflow-hidden mb-4 shadow-sm mx-auto w-32 md:w-40 border-4 border-white">
-                <img
-                  className="w-full h-full object-cover"
+              <div className="relative aspect-square rounded-full overflow-hidden mb-4 shadow-sm mx-auto w-32 md:w-40 border-4 border-white">
+                <Image
+                  className="object-cover"
                   src={leader.img}
                   alt={t("leaderPortraitAlt", { name: leader.name })}
+                  fill
+                  sizes="160px"
                 />
               </div>
               <h4 className="font-display text-h3 text-lg text-primary">

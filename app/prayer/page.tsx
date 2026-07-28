@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Icon } from "../components";
@@ -133,10 +134,12 @@ export default function PrayerPage() {
           {/* Bento */}
           <div className="lg:col-span-5 grid grid-cols-1 gap-6">
             <div className="relative rounded-xl overflow-hidden aspect-video shadow-lg">
-              <img
-                className="w-full h-full object-cover"
+              <Image
+                className="object-cover"
                 src={PRAYER_IMG}
                 alt={t("imageAlt")}
+                fill
+                sizes="(min-width: 1024px) 42vw, 100vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-primary/80 to-transparent flex flex-col justify-end p-6">
                 <h3 className="text-white font-display text-h3 mb-2">
