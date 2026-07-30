@@ -1,21 +1,34 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
 const DIRECTIONS_URL =
   "https://maps.google.com/?q=1000+Foster+Rd,+Hallandale+Beach,+FL+33009";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Visit");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/visit">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Visit" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/visit", locale),
   };
 }
 
-export default function VisitPage() {
+export default async function VisitPage({ params }: PageProps<"/[locale]/visit">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <VisitPageContent />;
+}
+
+function VisitPageContent() {
   const t = useTranslations("Visit");
 
   const infoCards = [

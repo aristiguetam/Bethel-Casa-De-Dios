@@ -12,8 +12,8 @@ export const SITE_URL = (
 
 export const SITE_NAME = "Bethel Casa De Dios";
 
-export const SITE_DESCRIPTION =
-  "Una comunidad de hospitalidad sagrada en Hollywood, Florida — arraigada en la tradición, mirando hacia el futuro.";
+// La descripción del sitio vive traducida en messages/{es,en}.json bajo
+// "Site.description", porque cada idioma necesita la suya para SEO.
 
 // Datos NAP (Name-Address-Phone) para SEO local / schema Church.
 export const CHURCH_INFO = {

@@ -1,40 +1,21 @@
-import { cookies, headers } from "next/headers";
+import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
 
-export const locales = ["es", "en"] as const;
-export const defaultLocale = "es";
-export const cookieName = "NEXT_LOCALE";
+// El idioma ya no sale de una cookie sino del segmento [locale] de la URL,
+// que es lo que permite que Google indexe las dos versiones por separado.
+// La detección por `accept-language` la hace ahora el proxy (next-intl) al
+// entrar a "/", no este archivo.
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  // `requestLocale` puede venir vacío o con basura: el segmento [locale] actúa
+  // como catch-all para rutas desconocidas, así que se valida siempre.
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
 
-export type Locale = (typeof locales)[number];
-
-export function isLocale(value: string | undefined): value is Locale {
-  return !!value && (locales as readonly string[]).includes(value);
-}
-
-function detectFromAcceptLanguage(header: string | null): Locale {
-  if (!header) return defaultLocale;
-  const preferred = header
-    .split(",")
-    .map((part) => part.trim().split(";")[0]?.toLowerCase())
-    .find((tag) => tag && tag.length > 0);
-  if (preferred && preferred.startsWith("en")) return "en";
-  return defaultLocale;
-}
-
-export async function resolveLocale(): Promise<Locale> {
-  const cookieStore = await cookies();
-  const stored = cookieStore.get(cookieName)?.value;
-  if (isLocale(stored)) return stored;
-
-  const headerStore = await headers();
-  return detectFromAcceptLanguage(headerStore.get("accept-language"));
-}
-
-export default getRequestConfig(async () => {
-  const locale = await resolveLocale();
-  const messages = (await import(`../messages/${locale}.json`)).default;
   return {
     locale,
-    messages,
+    messages: (await import(`../messages/${locale}.json`)).default,
   };
 });

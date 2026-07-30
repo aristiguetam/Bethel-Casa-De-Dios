@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Give");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/give">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Give" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/give", locale),
   };
 }
 
 const VOLUNTEERS_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBMyPlSt8hk4a6v4y7HlJ92rvL7UEvIt3DEwRZe51ZwoJ1w4dWECpjmIRtMqMYe7Dputvt1oCqB2BdbLyxNvSIsnTwk7IIc8ogeNfKHVSFAOux7ax0bwpjCMnhWKfPOBQhS_e9nkfOsIolb2zKeo5OqgDCVngOQNmwlS1nFBnpyH2Oef4U6yJpzOtGPnaarr3Y79Sqfm0J1kRHsl_sC-SaU9qQn8clSs3OVvIgxK_n_lCTyW31E__lwVJaJGaITPKahbRW29U07FsyV";
 
-export default function GivePage() {
+export default async function GivePage({ params }: PageProps<"/[locale]/give">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <GivePageContent />;
+}
+
+function GivePageContent() {
   const t = useTranslations("Give");
 
   const servingAreas = [

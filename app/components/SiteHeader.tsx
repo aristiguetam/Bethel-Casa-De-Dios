@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+// Link y usePathname vienen de la navegación localizada: los href se escriben
+// con la ruta interna ("/about") y se traducen solos a /es/nosotros o /en/about.
+import { Link, usePathname } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./Icon";
@@ -24,9 +25,18 @@ export function SiteHeader() {
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
+  // Cierra el menú al cambiar de página. El header vive en el layout y no se
+  // desmonta al navegar, así que `open` sobreviviría a la navegación.
+  //
+  // Se ajusta durante el render y no en un useEffect: un efecto corre DESPUÉS
+  // de que React pinte, así que el navegador alcanzaría a mostrar un fotograma
+  // con la página nueva y el menú todavía abierto. Al hacerlo aquí, React
+  // descarta este render y rehace el componente antes de tocar el DOM.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (pathname !== lastPathname) {
+    setLastPathname(pathname);
     setOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!open) return;

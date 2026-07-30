@@ -1,0 +1,56 @@
+name: Traducir eventos
+
+# Se dispara cuando cambia un archivo de evento. Da igual quién lo haya
+# cambiado —la encargada desde /keystatic, o alguien editando el repo— porque
+# ambos caminos terminan en un commit sobre content/events/.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "content/events/**"
+  # Permite lanzarla a mano desde la pestaña Actions, útil para reintentar
+  # una traducción que falló sin tener que tocar el contenido.
+  workflow_dispatch:
+
+permissions:
+  # Necesario para que el workflow pueda commitear la traducción de vuelta.
+  contents: write
+
+# Si se guardan dos eventos seguidos, la ejecución anterior se cancela: solo
+# interesa el estado final del contenido.
+concurrency:
+  group: traducir-eventos
+  cancel-in-progress: true
+
+jobs:
+  traducir:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Traducir los eventos que lo necesiten
+        run: node scripts/translate-events.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Guardar las traducciones
+        run: |
+          if [ -z "$(git status --porcelain content/events)" ]; then
+            echo "Sin cambios: no había nada que traducir."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/events
+          git commit -m "chore: traducción automática de eventos"
+          git push
+          # Este commit NO vuelve a disparar el workflow: GitHub no encadena
+          # ejecuciones a partir de commits hechos con el GITHUB_TOKEN por
+          # defecto. Es la protección que evita el bucle infinito.

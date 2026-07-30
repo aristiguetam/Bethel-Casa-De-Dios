@@ -1,4 +1,7 @@
 {
+  "Site": {
+    "description": "Una comunidad de hospitalidad sagrada en Hollywood, Florida — arraigada en la tradición, mirando hacia el futuro."
+  },
   "Nav": {
     "home": "Inicio",
     "about": "Nosotros",
@@ -180,29 +183,14 @@
     "calendarHeading": "Próximo calendario",
     "calendarBody": "Filtra por ministerio o encuentra los detalles de un evento específico abajo.",
     "noEvents": "Aún no hay eventos próximos. ¡Vuelve pronto!",
-    "list": {
-      "couplesWorkshop": {
-        "title": "Taller para parejas exitosas",
-        "description": "Nuestro llamado es restaurar las familias para la gloria de Dios. Cada relación requiere cuidado, y estos talleres ofrecen herramientas para fortalecer, mejorar y renovar las relaciones, con Dios en el centro de nuestras vidas.",
-        "day": "10",
-        "month": "MAY",
-        "year": "2026"
-      },
-      "summerKidsCamp": {
-        "title": "Campamento de verano para niños de 7 a 12 años",
-        "description": "Una experiencia de verano inolvidable para niños de 7 a 12 años, llena de diversión, aprendizaje y crecimiento espiritual. A través de juegos, actividades y enseñanza, los niños fortalecerán su fe y formarán amistades duraderas.",
-        "day": "15",
-        "month": "JUL",
-        "endDay": "15",
-        "endMonth": "AGO",
-        "year": "2026"
-      }
-    },
     "newsletterHeading": "No te pierdas ningún momento",
     "newsletterBody": "Suscríbete a nuestro boletín semanal para recibir actualizaciones de eventos y momentos destacados del ministerio en tu bandeja de entrada.",
     "newsletterPlaceholder": "Ingresa tu correo",
     "newsletterEmailLabel": "Correo electrónico",
-    "newsletterSubmit": "Suscribirse"
+    "newsletterSubmit": "Suscribirse",
+    "pastHeading": "Eventos pasados",
+    "pastBody": "Un vistazo a lo que hemos vivido juntos como iglesia.",
+    "showMorePast": "Ver más eventos pasados"
   },
   "Give": {
     "metaTitle": "Formas de donar",

@@ -1,13 +1,19 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Ministries");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/ministries">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Ministries" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/ministries", locale),
   };
 }
 
@@ -21,7 +27,14 @@ const ministryImgs = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAsHp4Ha270qvcEJgWKzVNmCXxC5Pxb9IBqQZuvk0fOSLbymrGR91kYSiE8aaSNm7UikVHO0Ql7yEE2jyVeBAGYAyvkFXafv1EbQ24BqbM5Cw6i7kXrszcdWCLMQVCD8gfsO5PUVctWXJm7iYDQcrI9N6eqxJrVhRMdfW6wWsslOUf7SlFyb1j9ZNSEnxVm-XbnBXpzdmKW3cbLR-jpEDl2on1w9UKvI97p_LEL_7SvtZm5FYmEbPIuZ-DsYOADZYZcPhTS_V9fD0zR",
 ];
 
-export default function MinistriesPage() {
+export default async function MinistriesPage({ params }: PageProps<"/[locale]/ministries">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <MinistriesPageContent />;
+}
+
+function MinistriesPageContent() {
   const t = useTranslations("Ministries");
 
   const otherMinistries = [

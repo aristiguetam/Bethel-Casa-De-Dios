@@ -1,15 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("About");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/about">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "About" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/about", locale),
   };
 }
 
@@ -29,7 +35,14 @@ const otherLeadersImgs = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDr4PnYDW9ef9riU5tFCUe9Pzp0izxTFYZTqoFlTGfuQi2ZqdVcfcSECHWHiNaSNRXZEnKR8sDcFhCqYEocXg9Wl3TZ5KHzAx2vn8_AGT7oIpu3P-qwe4U_v6Tj27BNBTMFZCBAcWRymH_vxDIDq97AET6QFmellD8-ub3jueJ8k54IBU9cx9DjVB_SPpCz9ilQq6jcuQ_IgXwZ0RS93J103cn4k5ytfryo9fe9um2yJVA3hwJSE_7bHnENNcVrTkBHnjFTnvYq6J9V",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: PageProps<"/[locale]/about">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <AboutPageContent />;
+}
+
+function AboutPageContent() {
   const t = useTranslations("About");
 
   const values = [

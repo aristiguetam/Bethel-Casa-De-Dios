@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "./data/site";
+import { absoluteUrl } from "@/i18n/metadata";
+import { routing, type AppPathname } from "@/i18n/routing";
 
 // Páginas públicas indexables. /ministries queda fuera a propósito
-// (está oculta y redirige a /).
+// (está oculta y redirige a la portada).
 const routes: {
-  path: string;
+  path: AppPathname;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
 }[] = [
@@ -19,10 +20,26 @@ const routes: {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return routes.map(({ path, priority, changeFrequency }) => ({
-    url: `${SITE_URL}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+
+  // Cada página se lista una vez por idioma, y cada entrada declara sus
+  // equivalentes en el resto de idiomas. Esto le confirma a Google el
+  // emparejamiento entre /es/eventos y /en/events.
+  return routes.flatMap(({ path, priority, changeFrequency }) =>
+    routing.locales.map((locale) => ({
+      url: absoluteUrl(path, locale),
+      lastModified,
+      changeFrequency,
+      priority,
+      alternates: {
+        languages: {
+          ...Object.fromEntries(
+            routing.locales.map((l) => [l, absoluteUrl(path, l)]),
+          ),
+          // Mismo x-default que declaran las etiquetas <link> de cada página:
+          // si no coinciden entre sí, Google ignora el emparejamiento.
+          "x-default": absoluteUrl(path, routing.defaultLocale),
+        },
+      },
+    })),
+  );
 }

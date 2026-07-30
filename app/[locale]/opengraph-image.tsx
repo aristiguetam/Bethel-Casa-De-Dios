@@ -1,12 +1,27 @@
 import { ImageResponse } from "next/og";
-import { SITE_DESCRIPTION, SITE_NAME } from "./data/site";
+import { getTranslations } from "next-intl/server";
+import { routing, toLocale } from "@/i18n/routing";
+import { SITE_NAME } from "../data/site";
 
 // Imagen de vista previa al compartir el enlace (WhatsApp, Facebook, X…).
 export const alt = SITE_NAME;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+// Una imagen por idioma, generada en el build: quien comparte /en/… ve la
+// descripción en inglés, y no se paga el render en cada petición.
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function OpengraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Site" });
+
   return new ImageResponse(
     (
       <div
@@ -49,7 +64,7 @@ export default function OpengraphImage() {
             lineHeight: 1.35,
           }}
         >
-          {SITE_DESCRIPTION}
+          {t("description")}
         </div>
       </div>
     ),

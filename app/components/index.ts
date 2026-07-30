@@ -3,6 +3,7 @@ export { Card, CardBody, CardTitle, CardMeta } from "./Card";
 export { Chip } from "./Chip";
 export { Container } from "./Container";
 export { DonationProgress } from "./DonationProgress";
+export { EventCard } from "./EventCard";
 export { Eyebrow, Heading } from "./Heading";
 export { HeroCarousel } from "./HeroCarousel";
 export { Icon } from "./Icon";

@@ -6,8 +6,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // /ministries está oculto (redirige a /), no queremos que se rastree.
-      disallow: "/ministries",
+      disallow: [
+        // /ministries está oculto (redirige a la portada), no queremos que se
+        // rastree. Hay que listar el slug de cada idioma.
+        "/es/ministerios",
+        "/en/ministries",
+        "/ministries",
+        // El panel de contenido de la iglesia no es contenido público.
+        "/keystatic",
+      ],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

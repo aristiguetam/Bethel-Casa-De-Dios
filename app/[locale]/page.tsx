@@ -1,14 +1,46 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { HeroCarousel, Icon, LatestMessage, ScheduleCard } from "./components";
-import { formatEventSchedule, pickHomepageEvents, useEvents } from "./data/events";
+import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { toLocale, type Locale } from "@/i18n/routing";
+import { HeroCarousel, Icon, LatestMessage, ScheduleCard } from "../components";
+import {
+  eventDateBadge,
+  formatEventSchedule,
+  getEvents,
+  pickHomepageEvents,
+  type HomepageEventSelection,
+} from "../data/events";
 
-export default function Home() {
+const featuredCtaClass =
+  "bg-white/10 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-label-sm hover:bg-white hover:text-primary transition-all";
+
+// Igual que la página de eventos: la portada muestra los próximos, así que hay
+// que regenerarla cada tanto para que "hoy" no quede fijado en el build.
+export const revalidate = 3600;
+
+// El título, la descripción y los alternates de la portada los aporta el
+// layout, que ya declara "/" como su ruta canónica.
+export default async function Home({ params }: PageProps<"/[locale]">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+
+  // Solo entran los próximos: los pasados viven en la página de eventos.
+  const { upcoming } = await getEvents(locale);
+
+  return <HomeContent locale={locale} events={pickHomepageEvents(upcoming)} />;
+}
+
+function HomeContent({
+  locale,
+  events,
+}: {
+  locale: Locale;
+  events: HomepageEventSelection;
+}) {
   const t = useTranslations("Home");
-  const allEvents = useEvents();
-  const { featured: featuredEvent, rest: restEvents } =
-    pickHomepageEvents(allEvents);
+  const { featured: featuredEvent, rest: restEvents } = events;
 
   const pillars = [
     {
@@ -240,40 +272,49 @@ export default function Home() {
                 </h3>
                 <p className="text-white/80 mb-6 flex items-center gap-2">
                   <Icon name="calendar_today" className="text-sm" />
-                  {formatEventSchedule(featuredEvent)}
+                  {formatEventSchedule(featuredEvent, locale)}
                 </p>
-                <Link
-                  href={featuredEvent.link ?? "/events"}
-                  className="bg-white/10 backdrop-blur-md text-white border border-white/40 px-8 py-3 rounded-full font-label-sm hover:bg-white hover:text-primary transition-all"
-                >
-                  {t("learnMore")}
-                </Link>
+                {/* `link` es una URL libre del evento (inscripción, formulario…),
+                    que puede apuntar fuera del sitio: ahí va un <a> normal. Sin
+                    ella, se enlaza la página de eventos con el Link localizado. */}
+                {featuredEvent.link ? (
+                  <a href={featuredEvent.link} className={featuredCtaClass}>
+                    {t("learnMore")}
+                  </a>
+                ) : (
+                  <Link href="/events" className={featuredCtaClass}>
+                    {t("learnMore")}
+                  </Link>
+                )}
               </div>
             </div>
-            {restEvents.map((event) => (
-              <div
-                key={event.id}
-                className="md:col-span-2 bg-white p-8 rounded-3xl border border-outline-variant/40 flex gap-8 items-center shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="bg-primary/5 rounded-2xl p-5 text-center min-w-25 border border-primary/10">
-                  <span className="block text-primary font-bold text-3xl leading-none mb-1">
-                    {event.day}
-                  </span>
-                  <span className="text-on-surface-variant text-xs uppercase font-bold tracking-widest">
-                    {event.month}
-                  </span>
+            {restEvents.map((event) => {
+              const { day, month } = eventDateBadge(event, locale);
+              return (
+                <div
+                  key={event.slug}
+                  className="md:col-span-2 bg-white p-8 rounded-3xl border border-outline-variant/40 flex gap-8 items-center shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="bg-primary/5 rounded-2xl p-5 text-center min-w-25 border border-primary/10">
+                    <span className="block text-primary font-bold text-3xl leading-none mb-1">
+                      {day}
+                    </span>
+                    <span className="text-on-surface-variant text-xs uppercase font-bold tracking-widest">
+                      {month}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-primary text-xl mb-2">
+                      {event.title}
+                    </h4>
+                    <p className="text-on-surface-variant flex items-center gap-2 text-sm italic">
+                      <Icon name="calendar_today" className="text-sm" />{" "}
+                      {formatEventSchedule(event, locale)}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-primary text-xl mb-2">
-                    {event.title}
-                  </h4>
-                  <p className="text-on-surface-variant flex items-center gap-2 text-sm italic">
-                    <Icon name="calendar_today" className="text-sm" />{" "}
-                    {formatEventSchedule(event)}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <p className="text-center text-on-surface-variant text-body-lg italic py-12">

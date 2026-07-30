@@ -1,21 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Contact");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/contact">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Contact" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/contact", locale),
   };
 }
 
 const MAP_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCjX3Tk5Cw7kWIUXCaP6frq3dQevk5vLwvWq6sPyC3ZhrSvYPSMm3Z-ZWPsPakZiVHGLXDu0kGdwYkJIRdvp3KMVtaAc63ebMx9-JRFtoKvaar_VF7cG29ZEGx9irVcU3BGCLY3pt3mkqy0rY_cEwUuUDWPZBaxznDKh3rbH_C2CEigXtRJu9cgREGP1bMwaIL8gbK0T4EFiFwhQQwiDzxsZKECZmow--kolyTuUkjlC4Dm3Bb28FSi5FA_vxq0F-5dAUPGyF9udGc0";
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: PageProps<"/[locale]/contact">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <ContactPageContent />;
+}
+
+function ContactPageContent() {
   const t = useTranslations("Contact");
 
   const services = [

@@ -1,21 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
-import { Icon } from "../components";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildAlternates } from "@/i18n/metadata";
+import { toLocale } from "@/i18n/routing";
+import { Icon } from "../../components";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("Prayer");
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/prayer">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
+  const t = await getTranslations({ locale, namespace: "Prayer" });
   return {
     title: t("metaTitle"),
     description: t("metaDescription"),
+    alternates: buildAlternates("/prayer", locale),
   };
 }
 
 const PRAYER_IMG =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCHZPzLzHO-YodXg3WN-JoRg97yNfH7lWMw4A9SqJl3Z6bw7iNUICTTXuqNpHdyAx5u0wW8HKaVpOItc0y98QnTwlYBKSswp4HbVpb7T0rbGK7bwvyqUa6qcJqfsu6lmAqo8hchIKyRjkedjxkuJeiJLZSoCYYGItnPhy0s5vWx_DR3jb_rwLt9kLtIB2_UqWTRTyVODXojfBBEheyUJ_fineuvuBPegbqGqVzRwcmBC1wszQtqqYkMcuxst25kRpKyJq8bSYbl8iVv";
 
-export default function PrayerPage() {
+export default async function PrayerPage({ params }: PageProps<"/[locale]/prayer">) {
+  const locale = toLocale((await params).locale);
+  // Fija el locale para que la página siga generándose estáticamente.
+  setRequestLocale(locale);
+  return <PrayerPageContent />;
+}
+
+function PrayerPageContent() {
   const t = useTranslations("Prayer");
 
   return (
