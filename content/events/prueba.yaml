@@ -7,3 +7,9 @@ time: '5:00'
 location: con DIOS
 featured: false
 published: true
+titleEs: prueba
+descriptionEs: esto es un evento de prueba
+titleEn: test
+descriptionEn: this is a test event
+translationStatus: ok
+translationHash: 498f6182c0225081
