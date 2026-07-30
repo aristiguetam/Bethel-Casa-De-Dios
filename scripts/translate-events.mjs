@@ -95,7 +95,11 @@ function readString(doc, key) {
 async function translate(client, title, description) {
   const response = await client.messages.create({
     model: "claude-opus-5",
-    max_tokens: 4096,
+    // Holgado a propósito. `max_tokens` es un tope, no un cargo: solo se paga
+    // lo que se genera. Y en este modelo el razonamiento va incluido en ese
+    // mismo tope —está activo por defecto—, así que un número justo para la
+    // traducción se lo puede comer el razonamiento y cortar el JSON a medias.
+    max_tokens: 16000,
     system: SYSTEM_PROMPT,
     // Traducir un par de frases no necesita razonamiento profundo; con
     // esfuerzo bajo la respuesta llega antes y cuesta menos.
@@ -111,8 +115,17 @@ async function translate(client, title, description) {
     ],
   });
 
+  // Hay que mirar stop_reason ANTES que el contenido: cuando la API rechaza
+  // algo responde 200 con el contenido vacío, no con un error.
   if (response.stop_reason === "refusal") {
     throw new Error("la API rechazó el contenido");
+  }
+  // Si se agotó el tope, el JSON llega cortado y JSON.parse falla con un
+  // "Unexpected end of JSON input" que no dice nada. Mejor decir qué pasó.
+  if (response.stop_reason === "max_tokens") {
+    throw new Error(
+      "la respuesta se cortó por max_tokens; el texto del evento es muy largo",
+    );
   }
 
   const text = response.content.find((block) => block.type === "text")?.text;

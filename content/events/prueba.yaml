@@ -1,0 +1,9 @@
+title: prueba
+description: 'esto es un evento de prueba '
+image: /images/events/prueba/image.png
+startDate: 2026-07-30
+endDate: 2026-08-01
+time: '5:00'
+location: con DIOS
+featured: false
+published: true
