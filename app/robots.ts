@@ -1,7 +1,13 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "./data/site";
+import { SITE_IS_INDEXABLE, SITE_URL } from "./data/site";
 
 export default function robots(): MetadataRoute.Robots {
+  // Sin dominio propio configurado, el deploy se cierra por completo y no se
+  // anuncia el sitemap. Ver la explicación en app/data/site.ts.
+  if (!SITE_IS_INDEXABLE) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
+
   return {
     rules: {
       userAgent: "*",

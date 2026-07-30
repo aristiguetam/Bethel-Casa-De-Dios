@@ -12,7 +12,12 @@ import { routing, toLocale } from "@/i18n/routing";
 import "../globals.css";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
-import { CHURCH_INFO, SITE_NAME, SITE_URL } from "../data/site";
+import {
+  CHURCH_INFO,
+  SITE_IS_INDEXABLE,
+  SITE_NAME,
+  SITE_URL,
+} from "../data/site";
 
 const notoSerif = Noto_Serif({
   variable: "--font-display-base",
@@ -50,6 +55,10 @@ export async function generateMetadata({
     },
     description,
     alternates: buildAlternates("/", locale),
+    // Mientras no haya dominio propio, noindex en todo el árbol. Las páginas
+    // hijas no lo pisan porque ninguna declara su propio `robots`.
+    // Ver app/data/site.ts.
+    ...(SITE_IS_INDEXABLE ? {} : { robots: { index: false, follow: false } }),
     openGraph: {
       type: "website",
       locale: ogLocale(locale),
