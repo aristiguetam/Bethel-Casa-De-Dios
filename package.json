@@ -17,6 +17,7 @@
     "react-dom": "19.2.4"
   },
   "comment:overrides": "postcss y sharp vienen clavados dentro de next con versiones vulnerables. npm audit propone 'arreglarlo' bajando a next 9, que no es opción. Se fuerzan aquí las versiones parcheadas; revisar y quitar cuando next las suba por su cuenta.",
+  "comment:brace-expansion": "NO añadir un override de brace-expansion. El aviso de DoS (GHSA-mh99-v99m-4gvg) cubre todo <=5.0.7, así que la única release limpia es la 5.0.8, y su API ya no es la que espera minimatch 9: 'expand is not a function' rompe el build y el lint. Se probó el 2026-07-29. Llega por minimatch desde @keystatic/core y desde eslint, y el fix que propone npm audit baja keystatic a 0.0.46. Se deja el aviso: el patrón que se expande sale de keystatic.config.ts ('content/events/*') y de la config de eslint, nunca de una petición, así que no hay entrada que un atacante controle.",
   "overrides": {
     "postcss": "^8.5.24",
     "sharp": "^0.35.0"
