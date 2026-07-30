@@ -62,8 +62,13 @@ export default config({
         // YAML la próxima vez que alguien guardara el evento desde el panel, y
         // se perdería la traducción.
         //
-        // La versión en español vive en `title` / `description` (los campos de
-        // arriba) y la inglesa aquí, que es de donde ya lee el sitio.
+        // Las dos versiones traducidas viven AQUÍ, una por idioma, y son las
+        // únicas que lee el sitio. `title` / `description` (los campos de
+        // arriba) guardan el texto tal como lo escribió la encargada y la
+        // traducción no los toca nunca: así, al reabrir el evento, siempre ve
+        // sus propias palabras y no una traducción de vuelta de lo que puso.
+        titleEs: fields.ignored(),
+        descriptionEs: fields.ignored(),
         titleEn: fields.ignored(),
         descriptionEn: fields.ignored(),
         // "ok" | "failed" | ausente (todavía sin traducir).

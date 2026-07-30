@@ -119,13 +119,16 @@ function toEvent(entry: EventEntry, locale: Locale): Event {
   const isSpanish = locale === "es";
   return {
     slug: entry.slug,
-    // La traducción tarda un par de minutos en llegar, y puede fallar. Hasta
-    // que exista, la versión en inglés muestra el texto en español en vez de
-    // dejar la tarjeta vacía.
-    title: isSpanish ? e.title : asText(e.titleEn) || e.title,
-    description: isSpanish
-      ? e.description
-      : asText(e.descriptionEn) || e.description,
+    // El sitio lee SIEMPRE los campos traducidos, nunca `title`/`description`:
+    // esos guardan el texto tal como lo escribió la encargada, en el idioma que
+    // fuera, así que por sí solos no dicen a qué idioma pertenecen.
+    //
+    // El respaldo a `title` es para la ventana entre guardar el evento y que la
+    // traducción llegue (un par de minutos), y para cuando falla: mejor mostrar
+    // la tarjeta en el idioma equivocado que dejarla vacía.
+    title: asText(isSpanish ? e.titleEs : e.titleEn) || e.title,
+    description:
+      asText(isSpanish ? e.descriptionEs : e.descriptionEn) || e.description,
     // La foto es obligatoria en el panel, pero el tipo la deja opcional.
     image: e.image ?? "",
     startDate: e.startDate,

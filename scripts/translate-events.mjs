@@ -8,14 +8,19 @@
 // Qué hace con cada evento:
 //   1. Detecta en qué idioma está escrito el título/descripción.
 //   2. Pide a Claude las dos versiones (español e inglés).
-//   3. Normaliza: `title`/`description` quedan SIEMPRE en español y
-//      `titleEn`/`descriptionEn` SIEMPRE en inglés, escriba la encargada en el
-//      idioma que escriba. El sitio ya lee exactamente esos campos.
+//   3. Las guarda en `titleEs`/`descriptionEs` y `titleEn`/`descriptionEn`, que
+//      son los campos que lee el sitio.
+//
+// `title`/`description` —lo que la encargada escribió en el panel— NO se tocan
+// nunca. Es a propósito: si se sobrescribieran con la versión española, quien
+// redactara en inglés volvería a abrir su evento y se encontraría un texto en
+// español que no escribió, y al corregirlo estaría editando una traducción.
+// Escriba en el idioma que escriba, el panel le devuelve sus propias palabras.
 //
 // Es deliberadamente tolerante a fallos: el evento ya está publicado cuando
 // esto corre, así que un error de traducción nunca debe tumbar nada. Se marca
-// el evento como fallido, se sigue con los demás y el sitio muestra el español
-// en ambos idiomas hasta que se resuelva.
+// el evento como fallido, se sigue con los demás y el sitio muestra el texto
+// original en ambos idiomas hasta que se resuelva.
 //
 // Se escribe en JavaScript plano (.mjs) a propósito: corre en CI sin pasar por
 // el compilador de TypeScript ni la configuración de Next.
@@ -128,10 +133,14 @@ async function processFile(client, filePath) {
     return { status: "skipped", reason: "sin título o descripción" };
   }
 
+  // La huella se calcula sobre el texto de origen —lo que hay en el panel—, que
+  // es exactamente lo que se comparará la próxima vez que corra esto.
   const hash = hashSource(title, description);
   const alreadyDone =
     doc.get("translationStatus") === "ok" &&
     doc.get("translationHash") === hash &&
+    readString(doc, "titleEs") &&
+    readString(doc, "descriptionEs") &&
     readString(doc, "titleEn") &&
     readString(doc, "descriptionEn");
 
@@ -140,25 +149,20 @@ async function processFile(client, filePath) {
   try {
     const result = await translate(client, title, description);
 
-    // Normalización: el español manda en title/description y el inglés en los
-    // campos *En, sin importar en qué idioma se escribió el original.
-    doc.set("title", result.es.title);
-    doc.set("description", result.es.description);
+    // Cada idioma a su campo. `title`/`description` se quedan como están: son
+    // de la encargada, no del script.
+    doc.set("titleEs", result.es.title);
+    doc.set("descriptionEs", result.es.description);
     doc.set("titleEn", result.en.title);
     doc.set("descriptionEn", result.en.description);
     doc.set("translationStatus", "ok");
-    // La huella se calcula sobre el español final, que es lo que se comparará
-    // la próxima vez.
-    doc.set(
-      "translationHash",
-      hashSource(result.es.title, result.es.description),
-    );
+    doc.set("translationHash", hash);
 
     await writeFile(filePath, doc.toString(), "utf8");
     return { status: "translated", from: result.sourceLanguage };
   } catch (error) {
-    // No se toca el contenido: el evento sigue publicado en su idioma y el
-    // sitio muestra el español en ambas versiones hasta que esto se arregle.
+    // No se toca el contenido: el evento sigue publicado con el texto que puso
+    // la encargada, y el sitio lo muestra en ambos idiomas hasta que se arregle.
     doc.set("translationStatus", "failed");
     await writeFile(filePath, doc.toString(), "utf8");
     return { status: "failed", error: error.message };
@@ -212,7 +216,7 @@ async function main() {
     const summary = [
       "### ⚠️ Traducciones fallidas",
       "",
-      "Los eventos siguen publicados y se muestran en español en ambos idiomas.",
+      "Los eventos siguen publicados; se muestran en ambos idiomas con el texto original.",
       "",
       ...failures.map((f) => `- ${f}`),
     ].join("\n");
